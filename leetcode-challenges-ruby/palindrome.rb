@@ -1,14 +1,20 @@
 # Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
-
-x=10
+x=101
 def is_palindrome(x)
-  n=x
-  reverse_x = 0
-  while(n > 0)
-    reverse_x = reverse_x*10 + n%10
-    puts n /= 10
+  return false if x.negative?
+
+  digits = x.digits
+  digits_length = digits.size
+
+  digits_length.times do |n|
+    if n == digits_length / 2
+      return true
+    elsif digits[n] == digits[(digits_length - 1) - n]
+      next
+    else
+      return false
+    end
   end
-  x == reverse_x
 end
 
 is_palindrome(x)
