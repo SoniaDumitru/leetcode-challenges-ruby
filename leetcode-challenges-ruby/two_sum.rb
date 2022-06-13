@@ -4,6 +4,7 @@
 nums = [2, 7, 11, 15]
 target = 9
 
+# SOLUTION 1
 def two_sum(nums, target)
   # this is used to map out each number to its index as we iterate through the array
   map = {}
@@ -20,4 +21,22 @@ def two_sum(nums, target)
 
 end
 
-two_sum(nums, target)
+
+# SOLUTION 2
+def two_sum(nums, target)
+  search = {} 
+  nums.each_with_index do |value, index|
+    # store the diff 
+    diff = target - value
+    # check if search hash contains diff
+      if search[diff]
+        # return the value and its index
+        return [search[diff], index] 
+      else
+        # if it doesnt exist save it
+        search[value] = index
+      end
+  end
+end
+
+puts two_sum([1,2,3], 3)
